@@ -19,3 +19,8 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+div > .play-card {
+  @apply hover:cursor-pointer transition-all duration-300 w-full rounded-xl py-4 my-2 shadow-none hover:shadow-lg
+  hover:shadow-black flex flex-row items-center justify-center border-2 border-white border-opacity-50 hover:border-opacity-100;
+}
