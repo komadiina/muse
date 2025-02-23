@@ -1,0 +1,14 @@
+# secrets
+.env
+
+# intellij junk
+*~
+
+# python junk
+__pycache__
+
+# venv
+/Include
+/Lib
+/Scripts
+pyvenv.cfg
