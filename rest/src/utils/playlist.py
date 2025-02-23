@@ -3,7 +3,7 @@ import requests
 import os
 
 
-def fetch(
+def fetch_playlist(
         api_key: str,
         playlist_id: str,
         part: str = "snippet"
@@ -15,7 +15,11 @@ def fetch(
     flag = "nextPageToken" not in response_data
     while flag:
         response = requests.get(base)
-        response_data = response.json()
+        response_data: dict = response.json()
+
+        if response_data.get("items") is None:
+            break
+
         items.extend(response_data["items"])
 
         if "nextPageToken" in response_data:
@@ -27,7 +31,7 @@ def fetch(
     return items
 
 
-def save(items: list, playlist_id: str) -> None:
+def save_playlist(items: list, playlist_id: str) -> None:
     filename = f"out/raw/{playlist_id}.json"
     with open(filename, "w") as f:
         json.dump(items, f, indent=4)
@@ -35,7 +39,7 @@ def save(items: list, playlist_id: str) -> None:
     print(f"Saved {len(items)} entries to {filename}")
 
 
-def process(playlist: list) -> list:
+def process_playlist(playlist: list) -> list:
     processed = []
     for item in playlist:
         try:
