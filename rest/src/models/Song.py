@@ -1,9 +1,12 @@
-from sqlmodel import SQLModel
+from sqlalchemy.orm import DeclarativeBase, Mapped
+from sqlmodel import SQLModel, Field
 
+class Song(DeclarativeBase):
+    __tablename__ = "songs"
 
-class Song(SQLModel, table=True):
-    id: int = SQLModel.field(primary_key=True)
-    title: str = SQLModel.field(index=True)
-    uploaded_by: str = SQLModel.field(index=True)
-    thumbnail: str = SQLModel.field(index=True)
-    video_id: str = SQLModel.field(index=True, unique=True)
+    id: Mapped[int] = Field(primary_key=True)
+    title: Mapped[str] = Field(index=True)
+    uploaded_by: Mapped[str] = Field(index=True)
+    uploaded_at: Mapped[str] = Field(index=True)
+    thumbnail: Mapped[str] = Field()
+    video_id: Mapped[str] = Field()

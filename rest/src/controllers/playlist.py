@@ -29,7 +29,7 @@ def fetch_playlist_by_id(playlist_id: str, process: Union[bool, None] = True):
             content=json.dumps({"error": "Youtube Data v3 API key not set in envvars."}, sort_keys=True, indent=4),
             status_code=fastapi.status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-    result = fetch_playlist(api_key=router.yt_key, playlist_id=playlist_id, part="snippet")
+    result = fetch_playlist(api_key=router.yt_key, playlist_id=playlist_id, part="snippet")["items"]
     if len(result) == 0:
         return fastapi.Response(
             content=json.dumps({"error": "No playlist items found."}, sort_keys=True, indent=4),

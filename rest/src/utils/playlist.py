@@ -1,13 +1,12 @@
 import json
 import requests
-import os
-
 
 def fetch_playlist(
         api_key: str,
         playlist_id: str,
-        part: str = "snippet"
-) -> list:
+        part: str = "snippet",
+        include_metadata: bool = False
+) -> dict:
     base = f"https://www.googleapis.com/youtube/v3/playlistItems?key={api_key}&part={part}&playlistId={playlist_id}&maxResults=50"
     items = []
 
@@ -28,8 +27,15 @@ def fetch_playlist(
         else:
             flag = False
 
-    return items
-
+    if not include_metadata:
+        return {"items": items}
+    else:
+        response = requests.get(f"https://www.googleapis.com/youtube/v3/playlists?key={api_key}&part=snippet&id={playlist_id}")
+        response_data = response.json()
+        return {
+            "items": items,
+            "metadata": response_data["items"][0]["snippet"]
+        }
 
 def save_playlist(items: list, playlist_id: str) -> None:
     filename = f"out/raw/{playlist_id}.json"
