@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+div.navbar {
+  @apply flex flex-row items-center gap-4 justify-center p-4 transition-all ease-in-out;
+}
+
+div.navbar > div {
+  @apply p-2 ease-out hover:shadow-md  shadow-neutral-200 border-2 border-white hover:border-neutral-400
+  rounded-lg transition-all duration-300 hover:cursor-pointer
+    font-semibold subpixel-antialiased;
+}

@@ -1,0 +1,10 @@
+<div class="navbar">
+  <div *ngFor="let navbarItem of navbarItems; index as i;">
+    <div
+      class=""
+      (click)="redirect(navbarItem.link)"
+    >
+      {{navbarItem.name}}
+    </div>
+  </div>
+</div>

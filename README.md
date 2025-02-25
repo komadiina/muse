@@ -4,7 +4,7 @@ songs. Inspired by the popular game [Heardle](https://www.heardle.com/), MUSE al
 guess the title of the song. The app uses a [YouTube API](https://developers.google.com/youtube/v3/getting-started)
 to fetch song details, and additional Python scripts to parse/process the fetched data.
 
-The app is built with [Next.js](https://nextjs.org/) and [Tailwind CSS](https://tailwindcss.com/).
+The app is built with [Angular.js](https://angular.dev/), alongside libraries such as [Flowbite](https://flowbite.com/).
 
 #### Features
 The app is still undergoing heavy development, therefore it is not production-ready yet.
